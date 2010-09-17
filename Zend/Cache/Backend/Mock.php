@@ -10,6 +10,11 @@ require_once 'Zend/Cache/Backend/ExtendedInterface.php';
 require_once 'Zend/Cache/Backend.php';
 
 /**
+ * @see Zend_Cache
+ */
+require_once 'Zend/Cache.php';
+
+/**
  * Zend_Cache_Backend_Mock - a Zend_Cache backend for unit testing
  *
  * Has no external dependencies (files, memcache, APC) - only stores values
