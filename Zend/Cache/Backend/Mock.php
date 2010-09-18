@@ -30,6 +30,7 @@ require_once 'Zend/Cache.php';
  * @author     Dan Copeland <dcopeland@empowercampaigns.com>
  * @copyright  2010 Empower Campaigns
  * @license    New BSD License (enclosed)
+ * @link       http://github.com/empower/Zend_Cache_Backend_Mock
  */
 class Zend_Cache_Backend_Mock
     extends Zend_Cache_Backend
