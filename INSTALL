@@ -1,1 +1,7 @@
 Find the location in which Zend Framework is installed (possibly /usr/local/lib/php) and copy Mock.php into the existing Zend/Cache/Backend directory there.
+
+You can also install it via PEAR like so:
+
+pear channel-discover zend.googlecode.com/svn
+pear channel-discover empower.github.com/pirum
+pear install empower/Deneb-alpha

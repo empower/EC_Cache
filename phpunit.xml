@@ -1,0 +1,17 @@
+<phpunit colors="true">
+        <testsuite name="Zend_Cache_Backend_Mock">
+                <directory>tests</directory>
+        </testsuite>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">Zend</directory>
+        </whitelist>
+    </filter>
+
+
+    <logging>
+        <log type="coverage-html" target="./tests/results" charset="UTF-8"
+            yui="true" highlight="true" />
+        <log type="junit" target="./tests/results/test-results.xml" />
+    </logging>
+</phpunit>

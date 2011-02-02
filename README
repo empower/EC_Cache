@@ -7,3 +7,6 @@ Cache contents do not persist between requests
 Based on Zend_Cache_Backend_Blackhole from which it borrows much (non)functionality
 
 Initially contains no expiration or tagging functionality
+
+
+See INSTALL for installtion instructions
