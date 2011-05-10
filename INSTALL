@@ -1,7 +1,17 @@
-Find the location in which Zend Framework is installed (possibly /usr/local/lib/php) and copy Mock.php into the existing Zend/Cache/Backend directory there.
-
-You can also install it via PEAR like so:
+Install through PEAR:
 
 pear channel-discover zend.googlecode.com/svn
 pear channel-discover empower.github.com/pirum
-pear install empower/Deneb-alpha
+pear install empower/EC_Cache
+
+And Use with Zend_Cache like so:
+
+    require_once 'EC/Cache/Backend/Mock.php';
+    $cache = Zend_Cache::factory(
+        'Core',                   // Frontend name
+        'EC_Cache_Backend_Mock',  // Backend (full) name
+        $frontendOptions,         // Optional frontend options
+        $backendOptions,          // Optional backend options
+        false,                    // Frontend custom class name
+        true                      // Backend custom class name
+    );
