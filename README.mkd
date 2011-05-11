@@ -1,0 +1,12 @@
+Caching add-ons for Zend_Cache
+
+* EC_Cache_Backend_Mock - an in memory Zend_Cache backend for unit testing
+    * Has no external dependencies (files, memcache, APC) - only stores values in process memory
+    * Cache contents do not persist between requests
+    * Based on Zend_Cache_Backend_Blackhole from which it borrows much (non)functionality
+    * Initially contains no expiration or tagging functionality
+    * See INSTALL for installtion instructions
+
+* EC_Cache_MultiInterface, EC_Cache_Frontend_CoreMulti and EC_Cache_Backend_LibmemcachedMulti
+    * Adds loadMulti() and saveMulti() methods
+    * Does not do compare and swap

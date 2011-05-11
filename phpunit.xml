@@ -1,10 +1,10 @@
 <phpunit colors="true">
-        <testsuite name="Zend_Cache_Backend_Mock">
+        <testsuite name="EC_Cache">
                 <directory>tests</directory>
         </testsuite>
     <filter>
         <whitelist>
-            <directory suffix=".php">Zend</directory>
+            <directory suffix=".php">EC</directory>
         </whitelist>
     </filter>
 

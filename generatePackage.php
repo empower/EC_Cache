@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL & ~E_DEPRECATED);
+
 require_once('PEAR/PackageFileManager2.php');
 
 PEAR::setErrorHandling(PEAR_ERROR_DIE);
@@ -16,16 +18,17 @@ $packagexml->setOptions(array(
         'tests'    => 'test',
     ),
     'exceptions' => array(
-        'INSTALL' => 'doc',
-        'README' => 'doc',
-        'LICENSE' => 'doc',
+        'INSTALL'    => 'doc',
+        'README.mkd' => 'doc',
+        'LICENSE'    => 'doc',
     ),
 ));
 
-$packagexml->setPackage('Zend_Cache_Backend_Mock');
-$packagexml->setSummary('Proper Mock backend for use with testing Zend_Cache');
+$packagexml->setPackage('EC_Cache');
+$packagexml->setSummary('Multi get/set support for Zend_Cache, as well as proper mock backend for use with testing');
 $packagexml->setDescription(
-    'All items are stored in the backend instance (memory).  Allows for proper mocking.'
+    'Supports loadMulti() and saveMulti() interface.  '
+    . 'And with the mock backend, all items are stored in the backend instance (memory).  Allows for proper mocking.'
 );
 
 $packagexml->setChannel('empower.github.com/pirum');
@@ -57,7 +60,7 @@ $packagexml->setLicense('New BSD License',
 
 $packagexml->setPhpDep('5.0.0');
 $packagexml->setPearinstallerDep('1.4.0b1');
-$packagexml->addPackageDepWithChannel('required', 'Zend', 'zend.googlecode.com/svn', '1.11.0');
+$packagexml->addPackageDepWithChannel('required', 'Zend', 'zend.googlecode.com/svn', '1.11.5');
 
 $packagexml->generateContents();
 $packagexml->writePackageFile();

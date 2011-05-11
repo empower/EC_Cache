@@ -15,7 +15,7 @@ require_once 'Zend/Cache/Backend.php';
 require_once 'Zend/Cache.php';
 
 /**
- * Zend_Cache_Backend_Mock - a Zend_Cache backend for unit testing
+ * EC_Cache_Backend_Mock - a Zend_Cache backend for unit testing
  *
  * Has no external dependencies (files, memcache, APC) - only stores values
  *   in process memory
@@ -30,9 +30,9 @@ require_once 'Zend/Cache.php';
  * @author     Dan Copeland <dcopeland@empowercampaigns.com>
  * @copyright  2010 Empower Campaigns
  * @license    New BSD License (enclosed)
- * @link       http://github.com/empower/Zend_Cache_Backend_Mock
+ * @link       http://github.com/empower/EC_Cache_Backend_Mock
  */
-class Zend_Cache_Backend_Mock
+class EC_Cache_Backend_Mock
     extends Zend_Cache_Backend
     implements Zend_Cache_Backend_ExtendedInterface
 {

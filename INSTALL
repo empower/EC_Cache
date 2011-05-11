@@ -4,7 +4,7 @@ pear channel-discover zend.googlecode.com/svn
 pear channel-discover empower.github.com/pirum
 pear install empower/EC_Cache
 
-And Use with Zend_Cache like so:
+Example usage of the mock backend:
 
     require_once 'EC/Cache/Backend/Mock.php';
     $cache = Zend_Cache::factory(
@@ -12,6 +12,20 @@ And Use with Zend_Cache like so:
         'EC_Cache_Backend_Mock',  // Backend (full) name
         $frontendOptions,         // Optional frontend options
         $backendOptions,          // Optional backend options
-        false,                    // Frontend custom class name
-        true                      // Backend custom class name
+        false,                    // Not using a custom frontend class name
+        true                      // Using a custom backend class name
+    );
+
+
+Example usage of the multi backend:
+
+    require_once 'EC/Cache/Frontend/CoreMulti.php';
+    require_once 'EC/Cache/Backend/LibmemcachedMulti.php';
+    $cache = Zend_Cache::factory(
+        'CoreMulti',                          // Frontend full name
+        'EC_Cache_Backend_LibmemcachedMulti', // Backend full name
+        $frontendOptions,                     // Optional frontend options
+        $backendOptions,                      // Optional backend options
+        true,                                 // Using custom frontend class name
+        true                                  // Using custom backend class name
     );

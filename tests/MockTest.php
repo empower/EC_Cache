@@ -1,9 +1,9 @@
 <?php
 
-require_once 'PHPUnit/Framework.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Zend/Cache.php';
 
-class Zend_Cache_Backend_MockTest extends PHPUnit_Framework_TestCase
+class EC_Cache_Backend_MockTest extends PHPUnit_Framework_TestCase
 {
     protected $_cache = null;
 
@@ -14,8 +14,8 @@ class Zend_Cache_Backend_MockTest extends PHPUnit_Framework_TestCase
             'automatic_serialization' => true,
         );
 
-        $this->_cache = Zend_Cache::factory('Core', 'Mock',
-                $frontendOptions, array());
+        $this->_cache = Zend_Cache::factory('Core', 'EC_Cache_Backend_Mock',
+                $frontendOptions, array(), false, true);
     }
 
     public function testRemove()

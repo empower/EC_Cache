@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
- <name>Zend_Cache_Backend_Mock</name>
+ <name>EC_Cache</name>
  <channel>empower.github.com/pirum</channel>
- <summary>Proper Mock backend for use with testing Zend_Cache</summary>
- <description>All items are stored in the backend instance (memory).  Allows for proper mocking.</description>
+ <summary>Multi get/set support for Zend_Cache, as well as proper mock backend for use with testing</summary>
+ <description>Supports loadMulti() and saveMulti() interface.  And with the mock backend, all items are stored in the backend instance (memory).  Allows for proper mocking.</description>
  <lead>
   <name>Bill Shupp</name>
   <user>shupp</user>
@@ -19,8 +19,8 @@
   <email>dcopeland@empowercampaigns.com</email>
   <active>yes</active>
  </lead>
- <date>2011-02-02</date>
- <time>12:18:42</time>
+ <date>2011-05-10</date>
+ <time>19:00:59</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -35,19 +35,26 @@
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <dir name="tests">
-    <file name="MockTest.php" role="test" />
-   </dir> <!-- /tests -->
-   <dir name="Zend">
+   <dir name="EC">
     <dir name="Cache">
      <dir name="Backend">
+      <file name="LibmemcachedMulti.php" role="php" />
       <file name="Mock.php" role="php" />
-     </dir> <!-- /Zend/Cache/Backend -->
-    </dir> <!-- /Zend/Cache -->
-   </dir> <!-- /Zend -->
+     </dir> <!-- /EC/Cache/Backend -->
+     <dir name="Frontend">
+      <file name="CoreMulti.php" role="php" />
+     </dir> <!-- /EC/Cache/Frontend -->
+     <file name="MultiInterface.php" role="php" />
+    </dir> <!-- /EC/Cache -->
+   </dir> <!-- /EC -->
+   <dir name="tests">
+    <file name="CoreMultiTest.php" role="test" />
+    <file name="LibmemcachedMultiTest.php" role="test" />
+    <file name="MockTest.php" role="test" />
+   </dir> <!-- /tests -->
    <file name="INSTALL" role="doc" />
    <file name="LICENSE" role="doc" />
-   <file name="README" role="doc" />
+   <file name="README.mkd" role="doc" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -61,7 +68,7 @@
    <package>
     <name>Zend</name>
     <channel>zend.googlecode.com/svn</channel>
-    <min>1.11.0</min>
+    <min>1.11.5</min>
    </package>
   </required>
  </dependencies>
@@ -76,7 +83,7 @@
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-02-02</date>
+   <date>2011-05-10</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
 * Initial release
