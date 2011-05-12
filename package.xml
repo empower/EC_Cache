@@ -19,11 +19,11 @@
   <email>dcopeland@empowercampaigns.com</email>
   <active>yes</active>
  </lead>
- <date>2011-05-11</date>
- <time>22:32:47</time>
+ <date>2011-05-12</date>
+ <time>11:03:25</time>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.1.1</release>
+  <api>0.1.1</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -31,7 +31,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-* Initial release
+* Update Zend Framework version depencency to 1.11.6 to get PDO security fix
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -70,7 +70,7 @@
    <package>
     <name>Zend</name>
     <channel>zend.googlecode.com/svn</channel>
-    <min>1.11.5</min>
+    <min>1.11.6</min>
    </package>
   </required>
  </dependencies>
@@ -89,6 +89,21 @@
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
 * Initial release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-05-12</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+* Update Zend Framework version depencency to 1.11.6 to get PDO security fix
    </notes>
   </release>
  </changelog>
