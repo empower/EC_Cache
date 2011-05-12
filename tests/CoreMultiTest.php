@@ -7,106 +7,67 @@ class EC_Cache_Frontend_CoreMultiTest extends PHPUnit_Framework_TestCase
 {
     public function testLoadMultiSuccess()
     {
-        $mock = $this->getMock('EC_Cache_Frontend_CoreMulti', array('_getBackend', '_log'), array(), '', false);
-        $results = array(
-            'key1' => serialize(array('foo' => 'bar')),
-            'key2' => serialize(array('bar' => 'foo'))
+        $cache = Zend_Cache::factory('EC_Cache_Frontend_CoreMulti', 'EC_Cache_Backend_MockMulti', array(), array(), true, true);
+
+        $cache->setOption('automatic_serialization', true);
+        $cache->setOption('ignore_user_abort', true);
+
+        $cache->saveMulti(
+            array(
+                'key1' => array('foo' => 'bar'),
+                'key2' => array('bar' => 'foo'),
+            )
         );
-
-        $backend = $this->getMock('stdClass', array('loadMulti'));
-        $backend->expects($this->once())
-                ->method('loadMulti')
-                ->will($this->returnValue($results));
-        $mock->expects($this->once())
-             ->method('_getBackend')
-             ->will($this->returnValue($backend));
-        $mock->expects($this->once())
-             ->method('_log');
-
-        $mock->setOption('automatic_serialization', true);
-
-        $values = $mock->loadMulti(array('key1', 'key2'));
+        $values = $cache->loadMulti(array('key1', 'key2'));
         $this->assertSame(array('foo' => 'bar'), $values['key1']);
         $this->assertSame(array('bar' => 'foo'), $values['key2']);
     }
 
-    public function testLoadMultiCachingDisabled()
+    public function testSaveMultiFailure()
     {
-        $mock = $this->getMock('EC_Cache_Frontend_CoreMulti', array('_getBackend', '_log'), array(), '', false);
-        $mock->setOption('caching', false);
+        $cache = Zend_Cache::factory('EC_Cache_Frontend_CoreMulti', 'EC_Cache_Backend_MockMulti', array(), array(), true, true);
 
-        $this->assertSame(array(), $mock->loadMulti(array('key1', 'key2')));
-    }
+        $cache->setOption('automatic_serialization', false);
+        $cache->setOption('ignore_user_abort', true);
 
-    public function testSaveMultiSuccess()
-    {
-        $mock = $this->getMock('EC_Cache_Frontend_CoreMulti', array('_getBackend', '_log'), array(), '', false);
-
-        $backend = $this->getMock('stdClass', array('saveMulti'));
-        $backend->expects($this->once())
-                ->method('saveMulti')
-                ->will($this->returnValue(true));
-        $mock->expects($this->once())
-             ->method('_getBackend')
-             ->will($this->returnValue($backend));
-        $mock->expects($this->once())
-             ->method('_log');
-
-        $mock->setOption('automatic_serialization', true);
-        $mock->setOption('ignore_user_abort', true);
-
-        $this->assertTrue($mock->saveMulti(array('key1' => 'foobar', 'key2' => 'barfoo')));
-    }
-
-    public function testSaveMultiSuccessNoSerialization()
-    {
-        $mock = $this->getMock('EC_Cache_Frontend_CoreMulti', array('_getBackend', '_log'), array(), '', false);
-
-        $backend = $this->getMock('stdClass', array('saveMulti'));
-        $backend->expects($this->once())
-                ->method('saveMulti')
-                ->will($this->returnValue(true));
-        $mock->expects($this->once())
-             ->method('_getBackend')
-             ->will($this->returnValue($backend));
-        $mock->expects($this->once())
-             ->method('_log');
-
-        $mock->setOption('automatic_serialization', false);
-        $mock->setOption('ignore_user_abort', true);
-
-        $this->assertTrue($mock->saveMulti(array('key1' => 'foobar', 'key2' => 'barfoo')));
-    }
-
-    public function testSaveMultiSerializationFail()
-    {
-        $mock = $this->getMock('EC_Cache_Frontend_CoreMulti', array('_getBackend', '_log'), array(), '', false);
-
-        $mock->expects($this->exactly(0))
-             ->method('_getBackend');
-        $mock->expects($this->exactly(0))
-             ->method('_log');
-
-        $mock->setOption('automatic_serialization', false);
-        $mock->setOption('ignore_user_abort', true);
-
-        $valueOne = new stdClass();
-        $valueTwo = new stdClass();
         $this->setExpectedException('Zend_Cache_Exception', 'Datas must be string or set automatic_serialization = true');
-        $mock->saveMulti(array('key1' => $valueOne, 'key2' => $valueTwo));
+        $cache->saveMulti(
+            array(
+                'key1' => array('foo' => 'bar'),
+                'key2' => new stdClass()
+            )
+        );
     }
 
-    public function testSaveMultiCachingDisabled()
+    public function testSaveCachingDisabled()
     {
-        $mock = $this->getMock('EC_Cache_Frontend_CoreMulti', array('_getBackend', '_log'), array(), '', false);
+        $cache = Zend_Cache::factory('EC_Cache_Frontend_CoreMulti', 'EC_Cache_Backend_MockMulti', array(), array(), true, true);
 
-        $mock->expects($this->exactly(0))
-             ->method('_getBackend');
-        $mock->expects($this->exactly(0))
-             ->method('_log');
+        $cache->setOption('caching', false);
 
-        $mock->setOption('caching', false);
+        $this->assertFalse($cache->saveMulti(
+            array(
+                'key1' => array('foo' => 'bar'),
+                'key2' => new stdClass()
+            )
+        ));
+    }
 
-        $this->assertFalse($mock->saveMulti(array('key1' => 'foo', 'key2' => 'bar')));
+    public function testCachingDisabled()
+    {
+        $cache = Zend_Cache::factory('EC_Cache_Frontend_CoreMulti', 'EC_Cache_Backend_MockMulti', array(), array(), true, true);
+
+        $cache->setOption('caching', false);
+
+        $this->assertFalse(
+            $cache->saveMulti(
+                array(
+                    'key1' => array('foo' => 'bar'),
+                    'key2' => new stdClass()
+                )
+            )
+        );
+
+        $this->assertEmpty($cache->loadMulti(array('key1', 'key2')));
     }
 }

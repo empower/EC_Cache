@@ -44,7 +44,7 @@ class EC_Cache_Frontend_CoreMulti extends Zend_Cache_Core implements EC_Cache_Mu
         $this->_log(
             "Zend_Cache_Core: load items '" . print_r($prefixMap, true) . "'", 7
         );
-        $data = $this->_getBackend()->loadMulti(array_keys($prefixMap));
+        $data = $this->_backend->loadMulti(array_keys($prefixMap));
 
         $returnValues = array();
         foreach ($data as $key => $value) {
@@ -81,7 +81,7 @@ class EC_Cache_Frontend_CoreMulti extends Zend_Cache_Core implements EC_Cache_Mu
             self::_validateIdOrTag($newId);
             if ($this->_options['automatic_serialization']) {
                 // we need to serialize datas before storing them
-                $value = serialize($data);
+                $value = serialize($value);
             } else {
                 if (!is_string($value)) {
                     Zend_Cache::throwException(
@@ -102,23 +102,11 @@ class EC_Cache_Frontend_CoreMulti extends Zend_Cache_Core implements EC_Cache_Mu
         if ($this->_options['ignore_user_abort']) {
             $abort = ignore_user_abort(true);
         }
-        $result = $this->_getBackend()->saveMulti($newData, $specificLifetime);
+        $result = $this->_backend->saveMulti($newData, $specificLifetime);
         if ($this->_options['ignore_user_abort']) {
             ignore_user_abort($abort);
         }
 
         return $result;
     }
-
-    // @codeCoverageIgnoreStart
-    /**
-     * Returns the backend instance, abstracted for testing.
-     *
-     * @return Zend_Cache_Backend_Interface
-     */
-    protected function _getBackend()
-    {
-        return $this->_backend;
-    }
-    // @codeCoverageIgnoreEnd
 }
