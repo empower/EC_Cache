@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -19,11 +19,11 @@
   <email>dcopeland@empowercampaigns.com</email>
   <active>yes</active>
  </lead>
- <date>2011-05-12</date>
- <time>11:03:25</time>
+ <date>2011-07-18</date>
+ <time>14:43:25</time>
  <version>
-  <release>0.1.1</release>
-  <api>0.1.1</api>
+  <release>0.1.2</release>
+  <api>0.1.2</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -31,7 +31,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-* Update Zend Framework version depencency to 1.11.6 to get PDO security fix
+* Update Zend Framework channel and version depencency to 1.11.9
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -69,8 +69,8 @@
    </pearinstaller>
    <package>
     <name>Zend</name>
-    <channel>zend.googlecode.com/svn</channel>
-    <min>1.11.6</min>
+    <channel>pear.zfcampus.org</channel>
+    <min>1.11.9</min>
    </package>
   </required>
  </dependencies>
@@ -104,6 +104,21 @@
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
 * Update Zend Framework version depencency to 1.11.6 to get PDO security fix
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.2</release>
+    <api>0.1.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-07-18</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+* Update Zend Framework channel and version depencency to 1.11.9
    </notes>
   </release>
  </changelog>

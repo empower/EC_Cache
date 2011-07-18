@@ -32,15 +32,15 @@ $packagexml->setDescription(
 );
 
 $packagexml->setChannel('empower.github.com/pirum');
-$packagexml->setAPIVersion('0.1.1');
-$packagexml->setReleaseVersion('0.1.1');
+$packagexml->setAPIVersion('0.1.2');
+$packagexml->setReleaseVersion('0.1.2');
 
 $packagexml->setReleaseStability('alpha');
 
 $packagexml->setAPIStability('alpha');
 
 $packagexml->setNotes('
-* Update Zend Framework version depencency to 1.11.6 to get PDO security fix
+* Update Zend Framework channel and version depencency to 1.11.9
 ');
 $packagexml->setPackageType('php');
 $packagexml->addRelease();
@@ -60,7 +60,7 @@ $packagexml->setLicense('New BSD License',
 
 $packagexml->setPhpDep('5.0.0');
 $packagexml->setPearinstallerDep('1.4.0b1');
-$packagexml->addPackageDepWithChannel('required', 'Zend', 'zend.googlecode.com/svn', '1.11.6');
+$packagexml->addPackageDepWithChannel('required', 'Zend', 'pear.zfcampus.org', '1.11.9');
 
 $packagexml->generateContents();
 $packagexml->writePackageFile();
