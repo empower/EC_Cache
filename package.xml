@@ -19,11 +19,11 @@
   <email>dcopeland@empowercampaigns.com</email>
   <active>yes</active>
  </lead>
- <date>2011-07-18</date>
- <time>14:43:25</time>
+ <date>2011-08-29</date>
+ <time>10:09:33</time>
  <version>
-  <release>0.1.2</release>
-  <api>0.1.2</api>
+  <release>0.1.3</release>
+  <api>0.1.3</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -31,7 +31,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-* Update Zend Framework channel and version depencency to 1.11.9
+* Fixed ZF channel dependency
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -68,9 +68,9 @@
     <min>1.4.0b1</min>
    </pearinstaller>
    <package>
-    <name>Zend</name>
+    <name>zf</name>
     <channel>pear.zfcampus.org</channel>
-    <min>1.11.9</min>
+    <min>1.11.10</min>
    </package>
   </required>
  </dependencies>
@@ -119,6 +119,21 @@
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
 * Update Zend Framework channel and version depencency to 1.11.9
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.3</release>
+    <api>0.1.3</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-08-29</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+* Fixed ZF channel dependency
    </notes>
   </release>
  </changelog>
