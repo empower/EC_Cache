@@ -27,6 +27,9 @@ class EC_Cache_Backend_LibmemcachedMulti extends Zend_Cache_Backend_Libmemcached
     {
         $fromCache = $this->_getMemcached()->getMulti($ids);
         $results   = array();
+        if ($fromCache === false) {
+            return $results;
+        }
         foreach ($fromCache as $key => $value) {
             if (isset($value[0])) {
                 $results[$key] = $value[0];

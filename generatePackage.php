@@ -32,15 +32,15 @@ $packagexml->setDescription(
 );
 
 $packagexml->setChannel('empower.github.com/pirum');
-$packagexml->setAPIVersion('0.1.3');
-$packagexml->setReleaseVersion('0.1.3');
+$packagexml->setAPIVersion('0.1.4');
+$packagexml->setReleaseVersion('0.1.4');
 
 $packagexml->setReleaseStability('alpha');
 
 $packagexml->setAPIStability('alpha');
 
 $packagexml->setNotes('
-* Fixed ZF channel dependency
+* Fixed getMult() handling of misses (returns empty array)
 ');
 $packagexml->setPackageType('php');
 $packagexml->addRelease();

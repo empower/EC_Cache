@@ -18,6 +18,19 @@ class EC_Cache_Backend_LibmemcachedMultiTest extends PHPUnit_Framework_TestCase
         $this->assertSame(array('foo' => 'bar'), $mock->loadMulti(array('foo')));
     }
 
+    public function testLoadMultiMiss()
+    {
+        $mock = $this->getMock('EC_Cache_Backend_LibmemcachedMulti', array('_getMemcached'), array(), '', false);
+        $cache = $this->getMock('stdClass', array('getMulti'));
+        $cache->expects($this->once())
+              ->method('getMulti')
+              ->will($this->returnValue(false));
+        $mock->expects($this->once())
+             ->method('_getMemcached')
+             ->will($this->returnValue($cache));
+        $this->assertSame(array(), $mock->loadMulti(array('foo')));
+    }
+
     public function testSaveMultiSuccess()
     {
         $mock = $this->getMock('EC_Cache_Backend_LibmemcachedMulti', array('_getMemcached'), array(), '', false);
