@@ -19,11 +19,11 @@
   <email>dcopeland@empowercampaigns.com</email>
   <active>yes</active>
  </lead>
- <date>2011-10-04</date>
- <time>11:26:37</time>
+ <date>2011-10-27</date>
+ <time>11:32:34</time>
  <version>
-  <release>0.1.4</release>
-  <api>0.1.4</api>
+  <release>0.1.5</release>
+  <api>0.1.5</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -31,7 +31,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>
-* Fixed getMult() handling of misses (returns empty array)
+* Updated ZF dependency again
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -68,9 +68,9 @@
     <min>1.4.0b1</min>
    </pearinstaller>
    <package>
-    <name>zf</name>
-    <channel>pear.zfcampus.org</channel>
-    <min>1.11.10</min>
+    <name>Zend</name>
+    <channel>empower.github.com/pirum</channel>
+    <min>1.11.11</min>
    </package>
   </required>
  </dependencies>
@@ -149,6 +149,21 @@
    <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
    <notes>
 * Fixed getMult() handling of misses (returns empty array)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.5</release>
+    <api>0.1.5</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-10-27</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+* Updated ZF dependency again
    </notes>
   </release>
  </changelog>
